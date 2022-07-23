@@ -105,6 +105,8 @@ this will link the references inside the method, and inside the block
 
 yield returns the value of the last evaluated expression, you can assign it's value to variables
 this is how reduction to a single value works in my_injection
+the input parameter passed by the tests doesn't throw any wrenches at you since it goes to 1 on multiplication
+and the user knows that it's treated as an extra list value during the sum functions
 
 That's pretty much it but it's hard to think about until you go through these yourself and I'm 
 not sure I could teach it yet
