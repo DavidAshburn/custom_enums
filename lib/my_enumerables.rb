@@ -13,36 +13,28 @@ module Enumerable
   def my_select
     if block_given?
       list = []
-      self.my_each do |val|
-        list.push(val) if yield(val)
-      end 
+      self.my_each { |val| list.push(val) if yield(val) } 
       list
     end
   end
 
   def my_all?
     if block_given?
-      self.my_each do |val|
-        return false unless yield(val)
-      end
+      self.my_each { |val| return false unless yield(val) }
       return true
     end
   end
 
   def my_any?
     if block_given?
-      self.my_each do |val|
-        return true if yield(val)
-      end
+      self.my_each { |val| return true if yield(val) }
       return false
     end
   end
 
   def my_none?
     if block_given?
-      self.my_each do |val|
-        return false if yield(val)
-      end
+      self.my_each { |val| return false if yield(val) }
       return true
     end
   end
@@ -50,9 +42,7 @@ module Enumerable
   def my_count
     if block_given?
       count = 0
-      self.my_each do |val|
-        count += 1 if yield(val)
-      end
+      self.my_each { |val| count += 1 if yield(val) }
       return count
     else
       return self.length
@@ -62,9 +52,7 @@ module Enumerable
   def my_map
     if block_given?
       list = []
-      self.my_each do |val|
-        list.push(yield(val))
-      end
+      self.my_each { |val| list.push(yield(val)) }
       return list
     end
   end
@@ -72,9 +60,7 @@ module Enumerable
   def my_inject(init_val = 0)
     if block_given?
       reduction = init_val
-      self.my_each do |val|
-        reduction = yield(reduction, val)
-      end
+      self.my_each { |val| reduction = yield(reduction, val) }
       return reduction
     end
   end
